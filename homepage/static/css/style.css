@@ -1,0 +1,78 @@
+.parallax {
+  background-image: url("/static/images/figuren.jpg");
+  height: 500px;
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-text {
+  color: rgba(121,37,61, 1);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.padded {
+  padding-top: 50px;
+  padding-right: 0px;
+  padding-bottom: 50px;
+  padding-left: 0px;
+}
+
+.not_padded {
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+}
+
+.margin {
+  margin-top: 10%;
+  margin-right: 20%;
+  margin-bottom: 10%;
+  margin-left: 20%;
+}
+
+@media screen and (max-width: 900px) {
+  .row_or_column { display: flex; flex-flow: column-reverse; }
+}
+
+.center_vertically {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: calc(1.525rem + 3.3vw);
+}
+
+@media (min-width: 1200px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+.my-color {
+  color: #79253d !important;
+}
+
+.zoom {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.text-shadow-white {
+  text-shadow: 1px 1px 0px white;
+}

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Willkommen{% endblock %}
+
+{% block content %}
+    <div class="container-fluid text-center">
+        <div class="row padded row_or_column">
+            <div class="col p-0 center_vertically">
+                <img src="{% static 'images/vereinshaus.jpg' %}" class="img-fluid" alt="vereinshaus">
+            </div>
+            <div class="col p-5 bg-light">
+                <h1 class="fw-bold" style="color:rgb(121,37,61);">Über uns</h1><br>
+                <p class="fw-light" style="text-align:left;">
+                    Seit Ende der 70er Jahre findet und engagiert Schachfreunde Ettenheim die besten Spieler der Region. Vom Schleifen ihrer Fähigkeiten bis hin zu theoretischen Grundlagen: Wir sind stolz darauf, nicht nur die Liebe zum Spiel zu lehren, sondern auch Ideale von Teamgeist und Loyalität zu vermitteln.
+                </p>
+            </div>
+        </div>
+        <div class="container p-5 text-start">
+            <h1 class="fw-bold" style="color:rgb(121,37,61);">Kontaktieren Sie uns</h1>
+            <p class="fw-light">0171 1242217</p>
+        </div>
+        <div class="row pt-5 mt-5 text-center bg-light">
+            <h1 class="fw-bold" style="color:rgb(121,37,61);">Aktuelles</h1>
+        </div>
+
+        <!--
+        <div id="carouselExampleCaptions" class="carousel carousel-dark slide m-4" data-bs-ride="pause">
+            <div class="carousel-indicators">
+                {% for article in articles %}
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter0|add:1 }}"></button>
+                {% endfor %}
+            </div>
+            <div class="carousel-inner container">
+                {% for article in articles %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif%}">
+                        <div class="card container shadow-sm zoom my-5 p-0" style="width: 18rem; height: 22rem;">
+                            <a href="{% url 'aktuelles' %}" class="btn h-100">
+                                {% if article.picture %}
+                                    <img src="{{ article.picture.url }}" class="card-img-top pt-3" style="width: 200px;" alt="thumbnail{{ article.id }}">
+                                {% else %}
+                                    <div class="container-fluid p-3 text-start">
+                                        {{ article.content | truncatechars:150}}
+                                    </div>
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ article.title }}</h5>
+                                    <p class="card-text">{{ article.date }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div> -->
+
+        <div id="carouselMultiple" class="carousel carousel-dark slide bg-light" data-bs-touch="true" data-bs-ride="carousel" data-bs-interval="20000">
+            <div class="carousel-indicators">
+                {% for chunk in articles_chunked %}
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter0|add:1 }}"></button>
+                {% endfor %}
+            </div>
+            <div class="carousel-inner container">
+                {% for chunk in articles_chunked %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif%} my-5">
+                        <div class="row">
+                            {% for article in chunk %}
+                                <div class="card container shadow-sm zoom my-1 p-0" style="width: 18rem; height: 20rem;">
+                                    <a href="{% url 'aktuelles' %}" class="btn h-100 p-1">
+                                        {% if article.image %}
+                                            <img src="{{ article.image.url }}" class="card-img-top object-fit-contain" style="height: 200px;" alt="thumbnail{{ article.id }}">
+                                        {% else %}
+                                            <div class="container-fluid p-3 text-start fw-light">
+                                                {{ article.content | truncatechars:200}}
+                                            </div>
+                                        {% endif %}
+                                        <div class="card-body">
+                                            <h6 class="card-title fw-bold my-color">{{ article.title }}</h6>
+                                            <p class="card-text fw-light">{{ article.date }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMultiple" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselMultiple" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!--
+        <div class="row justify-content-center mb-5 px-5">
+            {% for article in articles %}
+                <div class="card my-2 p-0 mx-3" style="width: 18rem;">
+                    <a href="{% url 'aktuelles' %}" class="btn h-100">
+                        {% if article.picture %}
+                            <img src="{{ article.picture.url }}" class="card-img-top" style="width: 150px;" alt="thumbnail{{ article.id }}">
+                        {% else %}
+                            <div class="container-fluid p-3 text-start">
+                                {{ article.content | truncatechars:80}}
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">{{ article.date }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        -->
+
+    </div>
+    <div class="container-fluid text-center p-0">
+        <img src="{% static 'images/figuren.jpg' %}" class="img-fluid padded" alt="figuren">
+    </div>
+    <blockquote class="container-fluid text-center blockquote mb-5 p-5 fs-4">
+        <p>„Viele Kleinigkeiten ergeben zusammen etwas Großes."</p>
+        <footer class="blockquote-footer">Vincent Van Gogh</footer>
+    </blockquote>
+{% endblock %}

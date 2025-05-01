@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Training{% endblock %}
+{% block training_active %}active{% endblock %}
+{% block training_aria %}aria-current="page"{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row padded">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h3 class="fw-bold" style="color:rgb(121,37,61);">Dein Schachverein in der Ortenau</h3><br>
+            <p class="fw-light">
+                <strong class="fw-bold">Das Jugendtraining findet freitags im Gymnasium Ettenheim statt. Es beginnt um 18:15 Uhr und endet um 19:45 Uhr.</strong><br>
+                Eingeladen sind alle Kinder und Jugendlichen aus der Umgebung.  Wir freuen uns immer über neue Gesichter und Gäste.
+                Neueinsteiger erhalten je nach Vorkenntnissen ggf. eine gesonderte Einführung im zweiten Teil des Trainings. Es besteht kein Zwang zum Wiederkommen.
+            </p>
+            <div class="ratio ratio-16x9 my-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14597.64560413307!2d7.788263124399335!3d48.261704303676126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47913ad46dae1fa1%3A0x99e92f84cd7511d4!2sSt%C3%A4dtisches%20Gymnasium%20Ettenheim!5e0!3m2!1sde!2sde!4v1744317790071!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="fw-light">
+                Man muss nichts zum Training mitbringen außer Lust am Schachspielen. Das Spiel- und Trainingsmaterial wird vom Schachclub gestellt.
+                In Ausnahmefällen, z.B. bei eventuellen Terminen während Schulferien, findet das Training im Vereinsheim statt.
+                Das befindet sich im 2.OG im Haus der Vereine in der Westliche Ringstraße 31 in Ettenheim.
+            </p><br>
+            <p class="fw-light">
+                Das Training findet in der Regel in zwei Gruppen für Einsteiger und Fortgeschrittene statt.
+                Zu Beginn des Trainings, für etwa eine halbe Stunde, machen wir Übungen zu Themen wie Eröffnung oder Kombinationen.
+                Danach wird für etwa eine Stunde gespielt, wobei ab und zu Tipps gegeben bzw. Verbesserungsvorschläge gemacht werden ohne in die Spiele zu sehr einzugreifen.
+            </p><br>
+            <p class="fw-light">
+                Da das Training auch mal ausfällt, bei Interesse bitte vorab melden. Information der bekannten Teilnehmer erfolgt per E-Mail.
+                Unser Kontakt ist <strong class="fw-bold">Andreas Lindenthal</strong>, der per E-Mail oder über die Mobilfunknummer 0171 1242217 kontaktiert werden kann.
+            </p><br>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<img src="{% static 'images/kinder.jpg' %}" width="100%" class="img-fluid" alt="vereinshaus">
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Kleidung{% endblock %}
+{% block kleidung_active %}active{% endblock %}
+{% block kleidung_aria %}aria-current="page"{% endblock %}
+
+{% block content %}
+    <div class="container-fluid text-center">
+        <div class="row my-5">
+            <div class="col-sm"></div>
+            <div class="col-sm-6">
+                <a href="https://www.shirtee.com/de/store/sfettenheim" class="link-body-emphasis link-underline-opacity-0" target="_blank">
+                    <h4 class="fw-bold" style="color:rgb(121,37,61);">
+                        Trikot Shop
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-up-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5"/>
+                            <path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0z"/>
+                        </svg>
+                    </h4>
+                </a>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+        <div class="row my-5">
+            <div class="col-sm"></div>
+            <div class="col-sm-8">
+                <a href="https://www.shirtee.com/de/9fy3j15au2d60/" type="button" class="btn m-2 zoom fw-light" style="width: 300px; height: 400px;" target="_blank">
+                    <img src="{% static 'images/hoodie_schwarz.png' %}" class="img-fluid" alt="hoodie_schwarz"><br>
+                    Pullover Logo schwarz
+                </a>
+                <a href="https://www.shirtee.com/de/1lke6sy29pvjr/" type="button" class="btn m-2 zoom fw-light" style="width: 300px; height: 400px;">
+                    <img src="{% static 'images/hoodie_weiß.png' %}" class="img-fluid" alt="hoodie_weiß"><br>
+                    Pullover Logo weiß
+                </a>
+                <a href="https://www.shirtee.com/de/ozi936jbmu1h5/" type="button" class="btn m-2 zoom fw-light" style="width: 300px; height: 400px;">
+                    <img src="{% static 'images/t-shirt_schwarz.png' %}" class="img-fluid" alt="t-shirt_schwarz"><br>
+                    T-shirt Logo schwarz
+                </a>
+                <a href="https://www.shirtee.com/de/m428jaxrz0phl/" type="button" class="btn m-2 zoom fw-light" style="width: 300px; height: 400px;">
+                    <img src="{% static 'images/t-shirt_weiß.png' %}" class="img-fluid" alt="t-shirt_weiß"><br>
+                    T-shirt Logo weiß
+                </a>
+                <a href="https://www.shirtee.com/de/n5r389ia07fdg/" type="button" class="btn m-2 zoom fw-light" style="width: 300px; height: 400px;">
+                    <img src="{% static 'images/poloshirt.png' %}" class="img-fluid" alt="poloshirt"><br>
+                    Poloshirt
+                </a>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+    </div>
+{% endblock %}

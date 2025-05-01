@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Aktuelles{% endblock %}
+{% block aktuelles_active %}active{% endblock %}
+{% block aktuelles_aria %}aria-current="page"{% endblock %}
+
+{% block content %}
+    <div class="col-lg-6 container-fluid text-start py-5">
+        {% for article in articles %}
+            <div class="row justify-content-center m-2 py-1">
+                <div class="card shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-sm text-start">
+                            <div class="card-body">
+                                <div class="row">
+                                    {% if article.image %}
+                                        <div class="col-sm-3 px-3">
+                                            <img src="{{ article.image.url }}" type="button" class="w-100 pb-2" data-bs-toggle="modal" data-bs-target="#imageModal{{ article.id }}" alt="thumbnail{{ article.id }}">
+                                            <div class="modal fade" id="imageModal{{ article.id }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                    <div class="modal-content bg-transparent border-0">
+                                                        <div class="modal-body">
+                                                            <div class="container-fluid">
+                                                                <div class="row text-center">
+                                                                    <div class="col">
+                                                                        <img src="{{ article.image.url }}" class="img-fluid" alt="Full Size Image">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col {% if article.content %}btn{% endif %} text-start p-0" {% if article.content %}type="button" data-bs-toggle="collapse" data-bs-target="#{{ article.id }}" aria-expanded="false" aria-controls="{{ article.id }}{% endif %}">
+                                        <h6 class="card-title fw-bold my-color">
+                                            {{ article.title }}
+                                            {% if article.content %}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down float-end" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
+                                                </svg>
+                                            {% endif %}
+                                        </h6>
+                                        <p class="card-text fw-light">{{ article.date }}</p>
+                                        {% if article.image_description %}
+                                            <p class="card-text fw-light"><small>{{ article.image_description }}</small></p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if article.content %}
+                    <div class="collapse mb-5 p-0 shadow-sm" id="{{ article.id }}">
+                        <div class="card card-body fw-light">
+                                {{ article.content | linebreaks }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
