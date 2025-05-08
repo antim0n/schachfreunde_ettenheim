@@ -13,14 +13,8 @@ def aktuelles(request):
     articles = Artikel.objects.all()
     return render(request, 'aktuelles.html', {'articles': articles})
 
-def spielabend(request):
-    return render(request, 'spielabend.html')
-
-def training(request):
-    return render(request, 'training.html')
-
-def mannschaften(request):
-    return render(request, 'mannschaften.html')
+def der_verein(request):
+    return render(request, 'der_verein.html')
 
 def sponsorenbrett(request):
     return render(request, 'sponsorenbrett.html')

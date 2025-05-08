@@ -74,7 +74,7 @@
                     <div class="carousel-item {% if forloop.first %}active{% endif%} my-5">
                         <div class="row">
                             {% for article in chunk %}
-                                <div class="card container shadow-sm zoom my-1 p-0" style="width: 18rem; height: 20rem;">
+                                <div class="card border-0 container shadow-sm zoom my-1 p-0" style="width: 18rem; height: 20rem;">
                                     <a href="{% url 'aktuelles' %}" class="btn h-100 p-1">
                                         {% if article.image %}
                                             <img src="{{ article.image.url }}" class="card-img-top object-fit-contain" style="height: 200px;" alt="thumbnail{{ article.id }}">

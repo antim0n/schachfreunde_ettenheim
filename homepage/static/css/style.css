@@ -64,6 +64,10 @@
   color: #79253d !important;
 }
 
+.my-bgcolor {
+  background-color: #79253d !important;
+}
+
 .zoom {
   transition: transform 0.3s ease, filter 0.3s ease;
 }

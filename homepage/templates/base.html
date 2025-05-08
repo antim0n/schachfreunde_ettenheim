@@ -32,14 +32,15 @@
               <li class="nav-item">
                 <a class="nav-link {% block aktuelles_active %}{% endblock %}" {% block aktuelles_aria %}{% endblock %} href="{% url 'aktuelles' %}">Aktuelles</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link {% block spielabend_active %}{% endblock %}" {% block spielabend_aria %}{% endblock %} href="{% url 'spielabend' %}">Spielabend</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% block training_active %}{% endblock %}" {% block training_aria %}{% endblock %} href="{% url 'training' %}">Training</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {% block mannschaften_active %}{% endblock %}" {% block mannschaften_aria %}{% endblock %} href="{% url 'mannschaften' %}">Mannschaften</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% block der_verein_active %}{% endblock %}" {% block der_verein_aria %}{% endblock %} href="{% url 'der_verein' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Der Verein
+                </a>
+                <ul class="dropdown-menu bg-light">
+                  <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}#training">Kinder-/Jugendtraining</a></li>
+                  <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}#spielabend">Spielabend</a></li>
+                  <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}#mannschaften">Mannschaften</a></li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% block sponsorenbrett_active %}{% endblock %}" {% block sponsorenbrett_aria %}{% endblock %} href="{% url 'sponsorenbrett' %}">Sponsorenbrett</a>
