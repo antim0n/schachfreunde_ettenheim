@@ -80,3 +80,14 @@
 .text-shadow-white {
   text-shadow: 1px 1px 0px white;
 }
+
+[id] {
+    scroll-margin-top: 60px; /* Adjust based on your navbar height */
+}
+
+/* Adjust for sticky navbar height */
+@media screen and (max-width: 900px) {
+  [id] {
+    scroll-margin-top: 400px; /* Adjust based on your navbar height */
+  }
+}

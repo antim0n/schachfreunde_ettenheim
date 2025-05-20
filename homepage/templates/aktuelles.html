@@ -8,7 +8,7 @@
     <div class="col-lg-6 container-fluid text-start py-5">
         {% for article in articles %}
             <div class="row justify-content-center m-2 py-1">
-                <div class="card shadow-sm">
+                <div class="card border-0 shadow-sm">
                     <div class="row g-0">
                         <div class="col-sm text-start">
                             <div class="card-body">
@@ -54,7 +54,7 @@
                 </div>
                 {% if article.content %}
                     <div class="collapse mb-5 p-0 shadow-sm" id="{{ article.id }}">
-                        <div class="card card-body fw-light">
+                        <div class="card border-0 card-body fw-light">
                                 {{ article.content | linebreaks }}
                         </div>
                     </div>

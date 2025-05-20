@@ -16,11 +16,17 @@ def aktuelles(request):
 def der_verein(request):
     return render(request, 'der_verein.html')
 
+def termine(request):
+    return render(request, 'termine.html')
+
 def sponsorenbrett(request):
     return render(request, 'sponsorenbrett.html')
 
 def kleidung(request):
     return render(request, 'kleidung.html')
+
+def kontakt(request):
+    return render(request, 'kontakt.html')
 
 def impressum(request):
     return render(request, 'impressum.html')

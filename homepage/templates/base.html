@@ -36,17 +36,24 @@
                 <a class="nav-link dropdown-toggle {% block der_verein_active %}{% endblock %}" {% block der_verein_aria %}{% endblock %} href="{% url 'der_verein' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Der Verein
                 </a>
-                <ul class="dropdown-menu bg-light">
+                <ul class="dropdown-menu border-0 bg-light">
+                  <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}">Über uns</a></li>
                   <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}#training">Kinder-/Jugendtraining</a></li>
                   <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}#spielabend">Spielabend</a></li>
                   <li><a class="dropdown-item fw-light" href="{% url 'der_verein' %}#mannschaften">Mannschaften</a></li>
                 </ul>
               </li>
               <li class="nav-item">
+                <a class="nav-link {% block termine_active %}{% endblock %}" {% block termine_aria %}{% endblock %} href="{% url 'termine' %}">Termine</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link {% block sponsorenbrett_active %}{% endblock %}" {% block sponsorenbrett_aria %}{% endblock %} href="{% url 'sponsorenbrett' %}">Sponsorenbrett</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% block kleidung_active %}{% endblock %}" {% block kleidung_aria %}{% endblock %} href="{% url 'kleidung' %}">Kleidung</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% block kontakt_active %}{% endblock %}" {% block kontakt_aria %}{% endblock %} href="{% url 'kontakt' %}">Kontakt</a>
               </li>
             </ul>
           </div>
@@ -68,5 +75,21 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbarCollapse = document.querySelector(".navbar-collapse");
+        const dropdownItems = document.querySelectorAll(".dropdown-menu .dropdown-item");
+
+        dropdownItems.forEach(function (item) {
+          item.addEventListener("click", function () {
+            if (window.innerWidth < 992) { // Only collapse on smaller screens
+              new bootstrap.Collapse(navbarCollapse, {
+                toggle: true
+              }).hide();
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
