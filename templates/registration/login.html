@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block login_active %}active{% endblock %}
+{% block login_aria %}aria-current="page"{% endblock %}
+
+{% block content %}
+    <div class="row text-center justify-content-center p-5">
+        {% if form.errors %}
+            <p>Benutzername und/oder Passwort stimmt nicht. Bitte versuche es nochmal.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Dein Account hat keinen Zugriff auf diese Seite.
+                Um fortzufahren, melde dich bitte mit einem Account an der die nötigen Berechtigungen hat.</p>
+            {% else %}
+            <p>Bitte melde dich an um den Inhalt anzusehen.</p>
+            {% endif %}
+        {% endif %}
+        <div class="col-auto">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <table class="table table-responsive">
+                    <tr>
+                        <td>{{ form.username.label_tag }}</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form.password.label_tag }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                </table>
+                <input type="submit" value="login">
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
+
+        {# Assumes you set up the password_reset view in your URLConf #}
+        {# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
+    </div>
+{% endblock %}
