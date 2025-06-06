@@ -12,3 +12,17 @@ class Artikel(models.Model):
     
     class Meta:
         ordering = ['-date']
+
+class Termin(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField()
+    starttime = models.TimeField()
+    endtime = models.TimeField()
+    location = models.CharField(max_length=255)
+    note = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ['date']

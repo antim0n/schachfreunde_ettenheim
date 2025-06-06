@@ -71,13 +71,15 @@
         &copy; 2024 Schachfreunde Ettenheim |
         <a class="link-opacity-75-hover {% block impressum_active %}{% endblock %}" {% block impressum_aria %}{% endblock %} href="{% url 'impressum' %}">Impressum</a>
         {% if user.is_authenticated %}
-          <li>User: {{ user.get_username }}</li>
-          <li>
-            <form id="logout-form" method="post" action="{% url 'logout' %}">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-link {% block logout_active %}{% endblock %}" {% block logout_aria %}{% endblock %}>Logout</button>
-            </form>
+          <ul class="list-unstyled">
+            <li>User: {{ user.get_username }}</li>
+            <li>
+              <form id="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link {% block logout_active %}{% endblock %}" {% block logout_aria %}{% endblock %}>Logout</button>
+              </form>
           </li>
+          </ul>
         {% else %}
           | <a class="{% block login_active %}{% endblock %}" {% block login_aria %}{% endblock %} href="{% url 'login' %}?next={{ request.path }}">Login</a>
         {% endif %}

@@ -5,10 +5,33 @@
 {% block aktuelles_aria %}aria-current="page"{% endblock %}
 
 {% block content %}
-    <div class="col-lg-6 container-fluid text-start py-5">
+    <div class="col-lg-8 container-fluid text-start py-5">
+        {% if user.is_authenticated %}
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                + Artikel hinzufügen
+            </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Neuer Artikel</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'aktuelles' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" value="Hinzufügen" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary ms-auto" data-bs-dismiss="modal">Abbrechen</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        {% endif %}
         {% for article in articles %}
             <div class="row justify-content-center m-2 py-1">
-                <div class="card border-0 shadow-sm">
+                <div class="card col border-0 shadow-sm">
                     <div class="row g-0">
                         <div class="col-sm text-start">
                             <div class="card-body">
@@ -42,7 +65,16 @@
                                                 </svg>
                                             {% endif %}
                                         </h6>
-                                        <p class="card-text fw-light">{{ article.date }}</p>
+                                        <p class="card-text fw-light">
+                                            {{ article.date }}
+                                            {% if user.is_authenticated %}
+                                                <button type="button" class="btn btn-outline-primary float-end">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"/>
+                                                    </svg>
+                                                </button>
+                                            {% endif %}
+                                        </p>
                                         {% if article.image_description %}
                                             <p class="card-text fw-light"><small>{{ article.image_description }}</small></p>
                                         {% endif %}
